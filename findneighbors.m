@@ -8,7 +8,7 @@ function neighbors = findneighbors(h, m, n)
     invalid = [];
     for i=1:4
         % if either coordinate is invalid
-        if (neighbors(i,1)<0 || neighbors(i,2)<0 || neighbors(i,1)>a || neighbors(i,2)>a)
+        if (neighbors(i,1)==0 || neighbors(i,2)==0 || neighbors(i,1)>a || neighbors(i,2)>a)
             invalid = [invalid, i];
         end
     end
