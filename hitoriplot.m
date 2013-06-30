@@ -1,15 +1,15 @@
-function fH = hitoriplot(problem, solution)
+function fH = hitoriplot(h, hsolved)
     % plots the given problem and fills in the solution
     
     close all;
     fH = figure;
     
-    [m, n] = size(problem);
+    [m, n] = size(h);
     
     for a=0:m-1
         for b=0:n-1
-            number = problem(b+1, a+1);
-            state = solution(b+1, a+1);
+            number = h(b+1, a+1);
+            state = hsolved(b+1, a+1);
             y = n-1-b; % correct y-coordinate compensates for axis indexing
             
             if (state == 0)
