@@ -1,33 +1,29 @@
-function fH = hitoriplot(h)
-%Plots a Hitori matrix
-%   Plots the given Hitori matrix h in a new figure.
-
-[m,n]=size(h);
-center = get(0,'ScreenSize');
-center=center(3:4)./2;
-center(1)=center(1)-30*n;
-center(2)=center(2)-30*m;
-
-fH = figure;
-set(fH,'Position',[center,60*n,60*m])
-set(fH,'name','Hitori Plot')
-%set(gca,'Position',[100,100,60*n,60*m])
-set(0,'defaultaxesposition',[0 0 1 1])
-set(gca,'xtick',[],'ytick',[])
-
-for i=0:m
-    hline = line([0,1],[-i/m,-i/m]);
-    set(hline,'color','black')
-end
-for j=0:n
-    vline = line([j/n,j/n],[0,-1]);
-    set(vline,'color','black')
-end
-
-for k=1:2:2*m
-    for l=1:2:2*n
-        text((k/(2*m))-.005*(length(num2str(h((l+1)/2,(k+1)/2)))-1),-l/(2*n),num2str(h((l+1)/2,(k+1)/2)));
+function fH = hitoriplot(problem, solution)
+    % plots the given problem and fills in the solution
+    
+    close all;
+    fH = figure;
+    
+    [m, n] = size(problem);
+    
+    for a=0:m-1
+        for b=0:n-1
+            number = problem(b+1, a+1);
+            state = solution(b+1, a+1);
+            y = n-1-b; % correct y-coordinate compensates for axis indexing
+            
+            if (state == 0)
+                color = [.5 .5 .5];
+            else
+                color = [1 1 1];
+            end
+            
+            rectangle('Position', [a,y,1,1], 'FaceColor', color);
+            if (state == 1)
+                rectangle('Position', [a+.25,y+.25,.5,.5], 'Curvature', [1,1], 'FaceColor', color);
+            end
+            
+            text(a+.5, y+.5, num2str(number));
+        end
     end
 end
-end
-
