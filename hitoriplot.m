@@ -12,14 +12,14 @@ function fH = hitoriplot(h, hsolved)
             state = hsolved(b+1, a+1);
             y = n-1-b; % correct y-coordinate compensates for axis indexing
             
-            if (state == 0)
+            if (state == 1)
                 color = [.5 .5 .5];
             else
                 color = [1 1 1];
             end
             
             rectangle('Position', [a,y,1,1], 'FaceColor', color);
-            if (state == 1)
+            if (state == 0)
                 rectangle('Position', [a+.25,y+.25,.5,.5], 'Curvature', [1,1], 'FaceColor', color);
             end
             
