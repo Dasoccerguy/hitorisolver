@@ -1,6 +1,7 @@
 function neighbors = findneighbors_index(h, i)
-    % convert index to coordinates
     dim = size(h, 1);
+    
+    % convert index to coordinates
     n = ceil(i / dim);
     
     m = mod(i, dim);
@@ -8,6 +9,7 @@ function neighbors = findneighbors_index(h, i)
         m = m + dim;
     end
     
+    % find neighbors
     neighbors = findneighbors(h, m, n);
     
     % convert coordinates to indicies
