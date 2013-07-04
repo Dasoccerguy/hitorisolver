@@ -33,7 +33,7 @@ function rows = find_row(p_row, current_row, h, solution)
     if current_row < m
         % add the rows one at a time to the solution and recurse
         for i=1:size(rows, 1)
-            solution = [solution; rows(i, :)]
+            solution = [solution; rows(i, :)];
             find_row(rows(i, :), current_row, h, solution);
             solution(end, :) = [];
         end
@@ -47,16 +47,14 @@ function rows = find_row(p_row, current_row, h, solution)
             % check for valid column numbers, then for no islands
             if validate_numbers_columns(h, solution)
                 if no_islands(solution)
-                    'final solution:'
                     solution
                     hitoriplot(h, solution);
 
-                    err = MException('ResultChk:BadInput', 'you are done!');
-                    throw(err);
+                    % err = MException('ResultChk:BadInput', 'you are done!');
+                    % throw(err);
                 end
-            else
-                solution(end, :) = [];
             end
+            solution(end, :) = [];
         end
     end
 end
