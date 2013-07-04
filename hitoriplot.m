@@ -1,8 +1,9 @@
 function fH = hitoriplot(h, solution)
     % plots the given problem and fills in the solution
     
-    close all;
+    close all
     fH = figure;
+    axis off
     
     [m, n] = size(h);
     
@@ -23,7 +24,7 @@ function fH = hitoriplot(h, solution)
                 rectangle('Position', [a+.25,y+.25,.5,.5], 'Curvature', [1,1], 'FaceColor', color);
             end
             
-            text(a+.5, y+.5, num2str(number));
+            text(a+.5, y+.5, num2str(number), 'HorizontalAlignment', 'center');
         end
     end
 end
